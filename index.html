@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Duck Café Menu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ===================== ROOT COLORS ===================== */
+:root{
+    --yellow:#FFD84D;
+    --dark:#2b2b2b;
+    --light:#fffaf0;
+    --card:#ffffff;
+    --accent:#ffb703;
+}
+
+/* ===================== GLOBAL ===================== */
+body{
+    margin:0;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background: linear-gradient(180deg,#fff6d5,#fff);
+    color:var(--dark);
+}
+
+h2{
+    margin-bottom:10px;
+    color:#333;
+}
+
+/* ===================== HERO ===================== */
+.hero{
+    width:100%;
+    height:60vh;
+    background:url("duck-hero.png") center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero h1{
+    background:rgba(255,255,255,0.8);
+    padding:20px 40px;
+    border-radius:20px;
+    font-size:40px;
+}
+
+/* ===================== MENU SECTION ===================== */
+.menu{
+    padding:40px 20px;
+    max-width:1100px;
+    margin:auto;
+}
+
+.menu-section{
+    display:grid;
+    grid-template-columns: 1fr 300px;
+    gap:30px;
+    margin-bottom:60px;
+    background:var(--card);
+    border-radius:25px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.menu-section img{
+    width:100%;
+    max-width:280px;
+    border-radius:20px;
+}
+
+/* ===================== ITEMS ===================== */
+.items{
+    width:100%;
+}
+
+.item{
+    display:flex;
+    justify-content:space-between;
+    padding:8px 0;
+    border-bottom:1px dashed #ddd;
+}
+
+.item span{
+    font-weight:600;
+}
+
+.price{
+    color:var(--accent);
+}
+
+/* ===================== FOOTER ===================== */
+.footer{
+    background:#222;
+    color:#fff;
+    padding:40px 20px;
+    text-align:center;
+}
+
+.footer h3{
+    margin-bottom:10px;
+}
+
+.social{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-top:20px;
+}
+
+.social a img{
+    width:32px;
+    transition:0.3s;
+}
+
+.social a img:hover{
+    transform:scale(1.2);
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media(max-width:900px){
+    .menu-section{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===================== HERO ===================== -->
+<div class="hero">
+    <h1>Duck Café</h1>
+</div>
+
+<!-- ===================== MENU ===================== -->
+<div class="menu">
+
+<!-- Espresso -->
+<div class="menu-section">
+    <div class="items">
+        <h2>Duck Espresso Corner</h2>
+
+        <div class="item"><span>Spanish Latte</span><span class="price">85 EGP</span></div>
+        <div class="item"><span>Latte</span><span class="price">70 EGP</span></div>
+        <div class="item"><span>Cappuccino</span><span class="price">70 EGP</span></div>
+        <div class="item"><span>Flat White</span><span class="price">60 EGP</span></div>
+        <div class="item"><span>Mocha</span><span class="price">75 EGP</span></div>
+        <div class="item"><span>Caramel Mocha</span><span class="price">80 EGP</span></div>
+    </div>
+
+    <!-- صورة البط -->
+    <img src="ducks/espresso-duck.png" alt="Espresso Duck">
+</div>
+
+<!-- Hot Drinks -->
+<div class="menu-section">
+    <div class="items">
+        <h2>Duck Hot Corner</h2>
+
+        <div class="item"><span>English Tea</span><span class="price">30 / 40 EGP</span></div>
+        <div class="item"><span>Green Tea</span><span class="price">30 / 40 EGP</span></div>
+        <div class="item"><span>Earl Grey</span><span class="price">30 / 40 EGP</span></div>
+        <div class="item"><span>Tea With Milk</span><span class="price">40 / 50 EGP</span></div>
+        <div class="item"><span>Hot Cider</span><span class="price">60 EGP</span></div>
+    </div>
+
+    <img src="ducks/hot-duck.png" alt="Hot Duck">
+</div>
+
+<!-- Iced -->
+<div class="menu-section">
+    <div class="items">
+        <h2>Duck Iced Corner</h2>
+
+        <div class="item"><span>Ice Latte</span><span class="price">70 EGP</span></div>
+        <div class="item"><span>Ice Mocha</span><span class="price">80 EGP</span></div>
+        <div class="item"><span>Ice Caramel Macchiato</span><span class="price">80 EGP</span></div>
+    </div>
+
+    <img src="ducks/iced-duck.png" alt="Iced Duck">
+</div>
+
+<!-- Desserts -->
+<div class="menu-section">
+    <div class="items">
+        <h2>Desserts</h2>
+
+        <div class="item"><span>Cookies</span><span class="price">45 EGP</span></div>
+        <div class="item"><span>Brownies</span><span class="price">55 EGP</span></div>
+        <div class="item"><span>Chocolate Cheese Cake</span><span class="price">80 EGP</span></div>
+        <div class="item"><span>Lotus Cheese Cake</span><span class="price">85 EGP</span></div>
+    </div>
+
+    <img src="ducks/dessert-duck.png" alt="Dessert Duck">
+</div>
+
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<div class="footer">
+    <h3>📍 Location</h3>
+    <p>Duck Café – Your Location Here</p>
+
+    <h3>⏰ Working Hours</h3>
+    <p>Daily from 10 AM to 2 AM</p>
+
+    <div class="social">
+        <a href="https://facebook.com" target="_blank"><img src="icons/facebook.svg"></a>
+        <a href="https://instagram.com" target="_blank"><img src="icons/instagram.svg"></a>
+        <a href="https://tiktok.com" target="_blank"><img src="icons/tiktok.svg"></a>
+        <a href="https://wa.me/201000000000" target="_blank"><img src="icons/whatsapp.svg"></a>
+        <a href="tel:+201000000000"><img src="icons/phone.svg"></a>
+    </div>
+</div>
+
+</body>
+</html>

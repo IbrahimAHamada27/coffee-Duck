@@ -1,219 +1,393 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
 <meta charset="UTF-8">
-<title>Duck Café Menu</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coffee Duck – Image First Menu</title>
+<meta name="viewport" content="width=1200">
+
+<!-- ===================== FONTS ===================== -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Tajawal:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-/* ===================== ROOT COLORS ===================== */
-:root{
-    --yellow:#FFD84D;
-    --dark:#2b2b2b;
-    --light:#fffaf0;
-    --card:#ffffff;
-    --accent:#ffb703;
+
+/* =====================================================
+   RESET
+===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* ===================== GLOBAL ===================== */
-body{
-    margin:0;
-    font-family: "Segoe UI", Tahoma, sans-serif;
-    background: linear-gradient(180deg,#fff6d5,#fff);
-    color:var(--dark);
+/* =====================================================
+   GLOBAL
+===================================================== */
+html, body {
+   background: #2a2a2a;
+   color: #fff;
+  font-family: "Poppins","Tajawal",sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
-h2{
-    margin-bottom:10px;
-    color:#333;
+/* =====================================================
+   LANGUAGE TOGGLE
+===================================================== */
+.lang-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  padding: 10px 26px;
+  border-radius: 40px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: 0.3s;
 }
 
-/* ===================== HERO ===================== */
-.hero{
-    width:100%;
-    height:60vh;
-    background:url("duck-hero.png") center/cover no-repeat;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.lang-toggle:hover {
+  background: rgba(255,255,255,0.3);
 }
 
-.hero h1{
-    background:rgba(255,255,255,0.8);
-    padding:20px 40px;
-    border-radius:20px;
-    font-size:40px;
+/* =====================================================
+   HERO
+===================================================== */
+.hero {
+  height: 100vh;
+  background: url("duck.jpeg") center / cover no-repeat;
+  display: flex;
+
+  align-items: center;        /* يفضل في النص رأسيًا */
+  justify-content: flex-end;  /* يروح يمين */
+
+  padding-right: 80px;        /* مسافة من اليمين */
 }
 
-/* ===================== MENU SECTION ===================== */
-.menu{
-    padding:40px 20px;
-    max-width:1100px;
-    margin:auto;
+
+.hero h1 {
+  font-size: 62px;
+  letter-spacing: 6px;
+  padding: 30px 80px;
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  border-radius: 60px;
+
+  border: 1px solid rgba(255,255,255,0.35);
 }
 
-.menu-section{
-    display:grid;
-    grid-template-columns: 1fr 300px;
-    gap:30px;
-    margin-bottom:60px;
-    background:var(--card);
-    border-radius:25px;
-    padding:30px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+/* =====================================================
+   MENU CONTAINER
+===================================================== */
+.menu {
+  max-width: 1500px;
+  margin: auto;
+  padding: 100px 30px;
 }
 
-.menu-section img{
-    width:100%;
-    max-width:280px;
-    border-radius:20px;
+/* =====================================================
+   MENU SECTION
+===================================================== */
+.menu-section {
+  position: relative;
+  margin-bottom: 130px;
+  border-radius: 36px;
+  overflow: hidden;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
 }
 
-/* ===================== ITEMS ===================== */
-.items{
-    width:100%;
+/* BACKGROUND IMAGE */
+.menu-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
 }
 
-.item{
-    display:flex;
-    justify-content:space-between;
-    padding:8px 0;
-    border-bottom:1px dashed #ddd;
+/* SECTION BACKGROUNDS */
+.espresso::before { background-image: url("espresso.jpeg"); }
+.hot1::before { background-image: url("hot1.jpeg"); }
+.hot2::before { background-image: url("hot.jpeg"); }
+.iced::before { background-image: url("iced.jpeg"); }
+.frappe::before { background-image: url("frappe.jpeg"); }
+.smoothie::before { background-image: url("smoothies.jpeg"); }
+.juice::before { background-image: url("juice.jpeg"); }
+.mojito::before { background-image: url("soda.jpeg"); }
+.boba::before { background-image: url("boba.jpeg"); }
+.dessert::before { background-image: url("dessert.jpeg"); }
+
+/* =====================================================
+   CONTENT GLASS BOX
+===================================================== */
+.section-content {
+  position: relative;
+  margin-left: 70px;
+  padding: 50px;
+  max-width: 650px;
+  background: rgba(0,0,0,0.25);
+
+  border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.35);
 }
 
-.item span{
-    font-weight:600;
+/* RTL SUPPORT */
+[dir="rtl"] .section-content {
+  margin-left: 0;
+  margin-right: 70px;
 }
 
-.price{
-    color:var(--accent);
+/* =====================================================
+   TITLES
+===================================================== */
+.section-title {
+  font-size: 38px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
-/* ===================== FOOTER ===================== */
-.footer{
-    background:#222;
-    color:#fff;
-    padding:40px 20px;
-    text-align:center;
+/* =====================================================
+   ITEMS
+===================================================== */
+.items {
+  width: 100%;
 }
 
-.footer h3{
-    margin-bottom:10px;
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.35);
+  font-size: 16px;
 }
 
-.social{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    margin-top:20px;
+.item span {
+  color: rgba(255,255,255,0.9);
 }
 
-.social a img{
-    width:32px;
-    transition:0.3s;
+.price {
+  font-weight: 600;
+  color: #fff;
 }
 
-.social a img:hover{
-    transform:scale(1.2);
+/* =====================================================
+   FOOTER
+===================================================== */
+.footer {
+  background: #0c0c0c;
+  padding: 70px 20px;
+  text-align: center;
 }
 
-/* ===================== RESPONSIVE ===================== */
-@media(max-width:900px){
-    .menu-section{
-        grid-template-columns:1fr;
-        text-align:center;
-    }
+.footer h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
 }
+
+.footer p {
+  color: rgba(255,255,255,0.7);
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  margin-top: 30px;
+}
+
+.social img {
+  width: 30px;
+  opacity: 0.75;
+  transition: 0.3s;
+}
+
+.social img:hover {
+  opacity: 1;
+  transform: scale(1.25);
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 900px) {
+  .hero h1 {
+    font-size: 44px;
+    padding: 20px 50px;
+  }
+
+  .menu-section {
+    min-height: 420px;
+  }
+
+  .section-content {
+    margin: auto;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 26px;
+  }
+
+  .item {
+    font-size: 14px;
+  }
+}
+
+.hero h1 {
+  opacity: 0;
+  transform: translateX(40px);
+  animation: heroFade 1.2s ease-out forwards;
+}
+
+@keyframes heroFade {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+.menu-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease;
+}
+
+.menu-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
+
 </style>
 </head>
 
 <body>
 
-<!-- ===================== HERO ===================== -->
-<div class="hero">
-    <h1>Duck Café</h1>
-</div>
+<!-- LANGUAGE BUTTON -->
+<button class="lang-toggle" id="langToggle">AR</button>
 
-<!-- ===================== MENU ===================== -->
-<div class="menu">
+<!-- HERO -->
+<section class="hero">
+  <h1 id="hero-title">Coffee Duck</h1>
+</section>
 
-<!-- Espresso -->
-<div class="menu-section">
+<!-- MENU -->
+<section class="menu">
+
+<!-- ESPRESSO -->
+<div class="menu-section espresso">
+  <div class="section-content">
+    <h2 class="section-title">Espresso</h2>
     <div class="items">
-        <h2>Duck Espresso Corner</h2>
-
-        <div class="item"><span>Spanish Latte</span><span class="price">85 EGP</span></div>
-        <div class="item"><span>Latte</span><span class="price">70 EGP</span></div>
-        <div class="item"><span>Cappuccino</span><span class="price">70 EGP</span></div>
-        <div class="item"><span>Flat White</span><span class="price">60 EGP</span></div>
-        <div class="item"><span>Mocha</span><span class="price">75 EGP</span></div>
-        <div class="item"><span>Caramel Mocha</span><span class="price">80 EGP</span></div>
+      <div class="item"><span>Spanish Latte</span><span class="price">85 EGP</span></div>
+      <div class="item"><span>Latte</span><span class="price">70 EGP</span></div>
+      <div class="item"><span>Cappuccino</span><span class="price">70 EGP</span></div>
+      <div class="item"><span>Mocha</span><span class="price">75 EGP</span></div>
+      <div class="item"><span>Espresso</span><span class="price">35 / 55</span></div>
     </div>
-
-    <!-- صورة البط -->
-    <img src="ducks/espresso-duck.png" alt="Espresso Duck">
+  </div>
 </div>
 
-<!-- Hot Drinks -->
-<div class="menu-section">
+<!-- HOT DRINKS -->
+<div class="menu-section hot1">
+  <div class="section-content">
+    <h2 class="section-title">Hot Drinks</h2>
     <div class="items">
-        <h2>Duck Hot Corner</h2>
-
-        <div class="item"><span>English Tea</span><span class="price">30 / 40 EGP</span></div>
-        <div class="item"><span>Green Tea</span><span class="price">30 / 40 EGP</span></div>
-        <div class="item"><span>Earl Grey</span><span class="price">30 / 40 EGP</span></div>
-        <div class="item"><span>Tea With Milk</span><span class="price">40 / 50 EGP</span></div>
-        <div class="item"><span>Hot Cider</span><span class="price">60 EGP</span></div>
+      <div class="item"><span>English Tea</span><span class="price">30 / 40</span></div>
+      <div class="item"><span>Green Tea</span><span class="price">30 / 40</span></div>
+      <div class="item"><span>Karak Tea</span><span class="price">65</span></div>
+      <div class="item"><span>Hot Chocolate</span><span class="price">80</span></div>
     </div>
-
-    <img src="ducks/hot-duck.png" alt="Hot Duck">
+  </div>
 </div>
 
-<!-- Iced -->
-<div class="menu-section">
+<!-- ICED -->
+<div class="menu-section iced">
+  <div class="section-content">
+    <h2 class="section-title">Iced Drinks</h2>
     <div class="items">
-        <h2>Duck Iced Corner</h2>
-
-        <div class="item"><span>Ice Latte</span><span class="price">70 EGP</span></div>
-        <div class="item"><span>Ice Mocha</span><span class="price">80 EGP</span></div>
-        <div class="item"><span>Ice Caramel Macchiato</span><span class="price">80 EGP</span></div>
+      <div class="item"><span>Ice Latte</span><span class="price">80</span></div>
+      <div class="item"><span>Ice Mocha</span><span class="price">80</span></div>
+      <div class="item"><span>Ice Spanish Latte</span><span class="price">85</span></div>
     </div>
-
-    <img src="ducks/iced-duck.png" alt="Iced Duck">
+  </div>
 </div>
 
-<!-- Desserts -->
-<div class="menu-section">
+<!-- FRAPPE -->
+<div class="menu-section frappe">
+  <div class="section-content">
+    <h2 class="section-title">Frappe</h2>
     <div class="items">
-        <h2>Desserts</h2>
-
-        <div class="item"><span>Cookies</span><span class="price">45 EGP</span></div>
-        <div class="item"><span>Brownies</span><span class="price">55 EGP</span></div>
-        <div class="item"><span>Chocolate Cheese Cake</span><span class="price">80 EGP</span></div>
-        <div class="item"><span>Lotus Cheese Cake</span><span class="price">85 EGP</span></div>
+      <div class="item"><span>Caramel</span><span class="price">80</span></div>
+      <div class="item"><span>Oreo</span><span class="price">80</span></div>
+      <div class="item"><span>Peanut Butter</span><span class="price">100</span></div>
     </div>
-
-    <img src="ducks/dessert-duck.png" alt="Dessert Duck">
+  </div>
 </div>
 
-</div>
-
-<!-- ===================== FOOTER ===================== -->
-<div class="footer">
-    <h3>📍 Location</h3>
-    <p>Duck Café – Your Location Here</p>
-
-    <h3>⏰ Working Hours</h3>
-    <p>Daily from 10 AM to 2 AM</p>
-
-    <div class="social">
-        <a href="https://facebook.com" target="_blank"><img src="icons/facebook.svg"></a>
-        <a href="https://instagram.com" target="_blank"><img src="icons/instagram.svg"></a>
-        <a href="https://tiktok.com" target="_blank"><img src="icons/tiktok.svg"></a>
-        <a href="https://wa.me/201000000000" target="_blank"><img src="icons/whatsapp.svg"></a>
-        <a href="tel:+201000000000"><img src="icons/phone.svg"></a>
+<!-- DESSERT -->
+<div class="menu-section dessert">
+  <div class="section-content">
+    <h2 class="section-title">Desserts</h2>
+    <div class="items">
+      <div class="item"><span>Cookies</span><span class="price">45</span></div>
+      <div class="item"><span>Brownies</span><span class="price">55</span></div>
+      <div class="item"><span>Cheese Cake</span><span class="price">80</span></div>
     </div>
+  </div>
 </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <h3>📍 Location</h3>
+  <p>Duck Street – Cairo</p>
+  <h3>⏰ Opening Hours</h3>
+  <p>Daily 10 AM – 2 AM</p>
+</footer>
+
+<script>
+let isArabic = false;
+const toggle = document.getElementById("langToggle");
+const hero = document.getElementById("hero-title");
+
+toggle.onclick = () => {
+  isArabic = !isArabic;
+  document.documentElement.lang = isArabic ? "ar" : "en";
+  toggle.textContent = isArabic ? "EN" : "AR";
+  hero.textContent = isArabic ? "قهوة البط" : "Coffee Duck";
+};
+</script>
+
+
+<script>
+const sections = document.querySelectorAll(".menu-section");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.15 });
+
+sections.forEach(sec => observer.observe(sec));
+</script>
+
+
 
 </body>
 </html>
